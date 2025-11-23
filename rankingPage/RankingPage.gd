@@ -10,15 +10,15 @@ signal successMusic_Stop
 
 
 func _ready():
-	GlobalVar.connect("backend_leaderboard_callback", $LeaderBoard, "display")
+	GlobalVar.connect("backend_leaderboard_callback", Callable($LeaderBoard, "display"))
 	
 func game_over_entrypoint():
 	emit_signal("successMusic_Play")
 	#$SuccessMusic.playing = 1
 	show_message("GAME OVER")
-	GlobalVar.backend_report_score()
-	var wsreq = {'type': GlobalVar.GetLeaderBoard,'param':'0'}
-	GlobalVar.send_message(JSON.print(wsreq))
+	#GlobalVar.backend_report_score()
+	#var wsreq = {'type': GlobalVar.GetLeaderBoard,'param':'0'}
+	#GlobalVar.send_message(JSON.stringify(wsreq))
 	$LeaderBoard.visible = true
 
 func show_message(text):
@@ -54,4 +54,3 @@ func _on_HomeButton_pressed():
 	emit_signal("back_home")
 	$MessageTimer.start()
 	$LeaderBoard.visible = false
-

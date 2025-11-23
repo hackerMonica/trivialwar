@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://bullet/AbstractBullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://materialBundle/bundle1/BossBullet.png" type="Texture" id=2]
+[ext_resource path="res://materialBundle/bundle1/BossBullet.png" type="Texture2D" id=2]
 [ext_resource path="res://bullet/enemy_bullet.gd" type="Script" id=3]
 
 [node name="EnemyBullet" groups=["enemy_bullets"] instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="VisibilityNotifier2D" parent="." index="0"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
 position = Vector2( -3, 1 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
-polygon = PoolVector2Array( -11, -8, 7, -9, 7, 10, -10, 9 )
+polygon = PackedVector2Array( -11, -8, 7, -9, 7, 10, -10, 9 )
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 texture = ExtResource( 2 )

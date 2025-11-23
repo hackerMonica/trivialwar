@@ -2,14 +2,14 @@
 
 [ext_resource path="res://bullet/player_bullet.gd" type="Script" id=2]
 
-[node name="AbstractBullet" type="RigidBody2D" groups=["player_bullets"]]
+[node name="AbstractBullet" type="Area2D" groups=["player_bullets"]]
 script = ExtResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2( -3.5, 1 )
 scale = Vector2( 1.55, 3.3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -19, -31, 12, -31, 12, 33, -18, 34 )
+polygon = PackedVector2Array( -19, -31, 12, -31, 12, 33, -18, 34 )
 
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

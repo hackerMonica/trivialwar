@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 var speedY = 400
 var speedX = (randf() - 0.5) * 2 * speedY
 var direction = -1

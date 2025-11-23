@@ -14,6 +14,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Mob_body_entered(body):
+	#print("mob body entered")
 	if not body.is_in_group("PlayerBullet"):
 		return
 	$MusicController.bulletHitMusicPlay()
@@ -23,6 +24,11 @@ func _on_Mob_body_entered(body):
 	if HP <= 0:
 		GlobalVar.score+=1
 	pass # Replace with function body.
+
+func _on_Mob_area_entered(area):
+	# check if the area is bullet, send to body entered handler
+	if area.is_in_group("PlayerBullet") or area.is_in_group("player_bullets"):
+		_on_Mob_body_entered(area)
 
 func getProp():
 	pass

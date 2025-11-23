@@ -31,7 +31,7 @@ func getProp():
 		return null
 	
 	var props_scene = load("res://props/"+string+".tscn")
-	var props = props_scene.instance()
+	var props = props_scene.instantiate()
 	props.position.x = position.x
 	props.position.y = position.y
 	return props

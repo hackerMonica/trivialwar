@@ -1,4 +1,4 @@
-extends "res://enemy//mob.gd"
+extends "res://enemy/mob.gd"
 
 var x_range=0.8
 var shootNum = 3
@@ -39,7 +39,7 @@ func getProp():
 	else:
 		return null
 	var props_scene = load("res://props/"+string+".tscn")
-	var props = props_scene.instance()
+	var props = props_scene.instantiate()
 	props.position.x = position.x
 	props.position.y = position.y
 	return props
@@ -54,9 +54,14 @@ func explore():
 		GlobalVar.have_boss = 0
 
 func _on_Boss_body_entered(body):
-	._on_Mob_body_entered(body)
+	super._on_Mob_body_entered(body)
 	if HP <= 0:
 		GlobalVar.score+=1
 		$MusicController.bossBgmStop()
 		#$BossBgmMusic.stop()
 		GlobalVar.have_boss = 0
+
+func _on_Boss_area_entered(area):
+	# check if the area is bullet, send to body entered handler
+	if area.is_in_group("PlayerBullet") or area.is_in_group("player_bullets"):
+		_on_Boss_body_entered(area)

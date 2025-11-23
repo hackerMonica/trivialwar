@@ -15,7 +15,7 @@ func straightShoot(shootNum,body):
 	if(body.is_in_group("mobs")):
 		var bullet_scene = load("res://bullet/EnemyBullet.tscn") 
 		for i in range(shootNum):
-			var bullet = bullet_scene.instance()
+			var bullet = bullet_scene.instantiate()
 			bullet.position.x = body.position.x+ (i*2 - shootNum + 1)*30
 			bullet.position.y = body.position.y
 			bullet.speedY = 1000
@@ -23,7 +23,7 @@ func straightShoot(shootNum,body):
 	else:
 		var bullet_scene = load("res://bullet/PlayerBullet.tscn") 
 		for i in range(shootNum):
-			var bullet = bullet_scene.instance()
+			var bullet = bullet_scene.instantiate()
 			bullet.position.x = body.position.x + (i*2 - shootNum + 1)*30
 			bullet.position.y = body.position.y
 			bullet.speedY = -1000
@@ -36,7 +36,7 @@ func multiShoot(shootNum,body):
 	if(body.is_in_group("mobs")):
 		var bullet_scene = load("res://bullet/EnemyBullet.tscn") 
 		for i in range(shootNum):
-			var bullet = bullet_scene.instance()
+			var bullet = bullet_scene.instantiate()
 			bullet.position.x = body.position.x+ (i*2 - shootNum + 1)*10
 			bullet.position.y = body.position.y
 			bullet.speedY = 500*sin((i+1)*metaAngle)
@@ -45,7 +45,7 @@ func multiShoot(shootNum,body):
 	else:
 		var bullet_scene = load("res://bullet/PlayerBullet.tscn") 
 		for i in range(shootNum):
-			var bullet = bullet_scene.instance()
+			var bullet = bullet_scene.instantiate()
 			bullet.position.x = body.position.x+ (i*2 - shootNum + 1)*10
 			bullet.position.y = body.position.y
 			bullet.speedY = 500*sin((i+1)*metaAngle)

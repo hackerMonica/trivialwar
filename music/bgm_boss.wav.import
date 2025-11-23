@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bgm_boss.wav-3985d83a0d0402f3f5bef24bd4e1c1dd.sample"
+type="AudioStreamWAV"
+uid="uid://bfr5cnj0v1l6i"
+path="res://.godot/imported/bgm_boss.wav-3985d83a0d0402f3f5bef24bd4e1c1dd.sample"
 
 [deps]
 
 source_file="res://music/bgm_boss.wav"
-dest_files=[ "res://.import/bgm_boss.wav-3985d83a0d0402f3f5bef24bd4e1c1dd.sample" ]
+dest_files=["res://.godot/imported/bgm_boss.wav-3985d83a0d0402f3f5bef24bd4e1c1dd.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

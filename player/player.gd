@@ -1,7 +1,7 @@
 extends Area2D
 signal hit
 signal getSupply
-export var speed = 480
+@export var speed = 480
 var shootNum = 3
 const shootNumMin = 3
 var multiShootTime = 0
@@ -20,8 +20,8 @@ func init():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	player_height=$Sprite.texture.get_height()
-	player_width=$Sprite.texture.get_width()
+	player_height=$Sprite2D.texture.get_height()
+	player_width=$Sprite2D.texture.get_width()
 	add_to_group("CanShoot")
 
 func _process(delta):
@@ -45,7 +45,7 @@ func _process(delta):
 var dragging = false
 func _input(event):
 	
-	if event is InputEventMouseButton  and event.button_index == BUTTON_LEFT :
+	if event is InputEventMouseButton  and event.button_index == MOUSE_BUTTON_LEFT :
 		if (event.position.x<position.x+0.75*player_width&&event.position.x>position.x-0.75*player_width)&&(event.position.y<position.y+0.75*player_height && event.position.y>position.y-0.75*player_height):
 			position=event.position
 			if not dragging and event.is_pressed():
@@ -55,7 +55,15 @@ func _input(event):
 	if event is InputEventMouseMotion and dragging:
 		position = event.position
 
-func _on_Player_hit(body):
+func _on_Player_hit(area):
+	# check if the area is bullet or props, send to body entered handler
+	if area.is_in_group("EnemyBullet") or area.is_in_group("enemy_bullets") or area.is_in_group("props"):
+		_on_Player_body_entered(area)
+		return
+	elif area.is_in_group("PlayerBullet") :
+		return
+	# print the group the area in for debug
+	print("area groups: ", area.get_groups())
 	hide()
 	print("Player hit")
 	HP = 0
@@ -87,10 +95,11 @@ func _on_Player_body_entered(body):
 		HP -= body.damage
 		body.queue_free()
 	elif(body.is_in_group("props")):
+		print("get props")
 		emit_signal("getSupply")
 		if(body.is_in_group("blood")):
 			if(HP+body.HP > HPMax):
-				 HP = HPMax
+				HP = HPMax
 			else:
 				HP = HP+body.HP
 			print("get blood props!\n")

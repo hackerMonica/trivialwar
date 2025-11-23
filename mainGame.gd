@@ -1,13 +1,13 @@
 extends Node
 
-export(PackedScene) var mob_scene
+@export var mob_scene: PackedScene
 
 func _ready():
 	randomize()
-	GlobalVar.connect("update_multi_player_score", self, "_on_GlobalVar_update_multi_player_score")
+	GlobalVar.connect("update_multi_player_score", Callable(self, "_on_GlobalVar_update_multi_player_score"))
 	$FirstPage._ready()
 
-func _process(delta):
+func _process(_delta):
 	$ScoreLabel.text = "SCORE: "+str(GlobalVar.score)
 	$LifeLabel.text = "LIFE: "+str($Player.HP)
 	var mob_list = get_tree().get_nodes_in_group("mobs")
@@ -39,8 +39,8 @@ func new_game():
 		
 		
 		# Tell backend we have started
-		var wsreq = {'type': GlobalVar.StartMultiplayerGame,'param':'0'}
-		GlobalVar.send_message(JSON.print(wsreq))
+		#var wsreq = {'type': GlobalVar.StartMultiplayerGame,'param':'0'}
+		#GlobalVar.send_message(JSON.stringify(wsreq))
 	
 	$Player.start($PlayerStartPosition.position)
 	$MobTimer.start()
@@ -63,8 +63,8 @@ func game_over():
 	get_tree().call_group("boss","queue_free")
 	GlobalVar.have_boss = 0
 	$ScoreReportTimer.stop()
-	if GlobalVar.is_multiplayer_mode:
-		GlobalVar.backend_report_score()
+	#if GlobalVar.is_multiplayer_mode:
+		#GlobalVar.backend_report_score()
 
 # Load elite scene for later instance
 var elite_scene = preload("res://enemy/Elite.tscn")
@@ -73,15 +73,15 @@ var boss_scene = preload("res://enemy/Boss.tscn")
 func _on_MobTimer_timeout():
 	if GlobalVar.have_boss==0 && GlobalVar.score%20<=10 && GlobalVar.score%20>=9:
 		GlobalVar.have_boss = 1
-		var boss = boss_scene.instance()
+		var boss = boss_scene.instantiate()
 		boss.position.x = 0.5*GlobalVar.screen_size.x
 		add_child(boss)
 		make_label_top()
 		$MusicController.bgmStop()
 	if randf()>0.8:
 		# Create elite
-		var elite = elite_scene.instance()
-		elite.position.x = rand_range(0, GlobalVar.screen_size.x)
+		var elite = elite_scene.instantiate()
+		elite.position.x = randf_range(0, GlobalVar.screen_size.x)
 		match GlobalVar.Difficulty:
 			"easy":	
 				elite.speed = 600
@@ -97,9 +97,9 @@ func _on_MobTimer_timeout():
 		make_label_top()
 	else:
 		# Create mob
-		var mob = mob_scene.instance()
+		var mob = mob_scene.instantiate()
 		
-		mob.position.x = rand_range(0, GlobalVar.screen_size.x)
+		mob.position.x = randf_range(0, GlobalVar.screen_size.x)
 		match GlobalVar.Difficulty:
 			"easy":
 				mob.speed = 500
@@ -140,8 +140,8 @@ func back_home():
 func _on_GlobalVar_update_multi_player_score(raw_data):
 	$MultiPlayerScoreLabel.text = "Rival: "+raw_data
 
-func _on_ScoreReportTimer_timeout():
-	GlobalVar.backend_report_score()
+#func _on_ScoreReportTimer_timeout():
+	#GlobalVar.backend_report_score()
 	
 
 func make_label_top():

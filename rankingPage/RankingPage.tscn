@@ -1,56 +1,92 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bsjxmr52581lh"]
 
-[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://rankingPage/RankingPage.gd" type="Script" id=2]
-[ext_resource path="res://rankingPage/leader_board.gd" type="Script" id=3]
-[ext_resource path="res://music/success.wav" type="AudioStream" id=4]
+[ext_resource type="FontFile" uid="uid://bgyv4uqm1jff5" path="res://fonts/Xolonium-Regular.ttf" id="1"]
+[ext_resource type="Script" uid="uid://c6xhgbuc4eq64" path="res://rankingPage/RankingPage.gd" id="2"]
+[ext_resource type="Script" uid="uid://c4hm56agdicuq" path="res://rankingPage/leader_board.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://cfhpgp1ae6up" path="res://music/success.wav" id="4"]
 
-[sub_resource type="DynamicFont" id=2]
-size = 64
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
 
-[sub_resource type="DynamicFont" id=1]
-size = 64
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
 
-[sub_resource type="InputEventAction" id=3]
-action = "user_confirm"
+[sub_resource type="Shortcut" id="4"]
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 3 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 64
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
 
 [node name="RankingPage" type="CanvasLayer"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="Message" type="Label" parent="."]
 visible = false
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -241.0
-margin_top = -758.0
-margin_right = 193.0
-margin_bottom = -680.0
-custom_fonts/font = SubResource( 2 )
+offset_left = -241.0
+offset_top = -758.0
+offset_right = 193.0
+offset_bottom = -680.0
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 64
 text = "GAME OVER"
 
 [node name="RestartButton" type="Button" parent="."]
 visible = false
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -174.0
-margin_top = -260.0
-margin_right = 174.0
-margin_bottom = -176.0
-custom_fonts/font = SubResource( 1 )
-shortcut = SubResource( 4 )
+offset_left = -174.0
+offset_top = -260.0
+offset_right = 174.0
+offset_bottom = -176.0
+theme_override_fonts/font = SubResource("1")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("4")
 text = "RESTART"
 
 [node name="MessageTimer" type="Timer" parent="."]
@@ -58,26 +94,28 @@ one_shot = true
 
 [node name="HomeButton" type="Button" parent="."]
 visible = false
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -271.0
-margin_top = -84.0
-margin_right = 271.0
-custom_fonts/font = SubResource( 5 )
+offset_left = -271.0
+offset_top = -84.0
+offset_right = 271.0
+theme_override_fonts/font = SubResource("5")
+theme_override_font_sizes/font_size = 64
 text = "BACK TO HOME"
 
 [node name="LeaderBoard" type="ScrollContainer" parent="."]
 visible = false
-margin_left = 164.0
-margin_top = 381.0
-margin_right = 909.0
-margin_bottom = 1140.0
-script = ExtResource( 3 )
+offset_left = 164.0
+offset_top = 381.0
+offset_right = 909.0
+offset_bottom = 1140.0
+script = ExtResource("3")
 
 [node name="SuccessMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

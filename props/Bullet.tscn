@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://props/AbstractProps.tscn" type="PackedScene" id=1]
-[ext_resource path="res://materialBundle/bundle3/prop_bullet.png" type="Texture" id=2]
+[ext_resource path="res://materialBundle/bundle3/prop_bullet.png" type="Texture2D" id=2]
 [ext_resource path="res://props/bullet.gd" type="Script" id=3]
 
 [node name="Bullet" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="VisibilityNotifier2D" parent="." index="0"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
 position = Vector2( -0.499996, -1.5 )
 scale = Vector2( 5.65, 5.15 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 position = Vector2( -1.73371, 0.850414 )
 scale = Vector2( 1.46739, 1.70082 )
-polygon = PoolVector2Array( 37.9815, 12.4349, 38.663, 28.8976, -36.9815, 28.8976, -36.9815, 14.7867, -18, -31, 21.6259, -31.0735 )
+polygon = PackedVector2Array( 37.9815, 12.4349, 38.663, 28.8976, -36.9815, 28.8976, -36.9815, 14.7867, -18, -31, 21.6259, -31.0735 )
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 position = Vector2( 0, -2 )
 scale = Vector2( 3.10714, 2.99242 )
 texture = ExtResource( 2 )

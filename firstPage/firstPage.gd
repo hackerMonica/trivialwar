@@ -57,5 +57,3 @@ func _on_HardButton_pressed():
 
 func _on_MessageTimer_timeout():
 	$Message.hide()
-
-

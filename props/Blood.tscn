@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://props/AbstractProps.tscn" type="PackedScene" id=1]
-[ext_resource path="res://materialBundle/bundle1/blood.png" type="Texture" id=2]
+[ext_resource path="res://materialBundle/bundle1/blood.png" type="Texture2D" id=2]
 [ext_resource path="res://props/blood.gd" type="Script" id=3]
 
 [node name="Blood" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="VisibilityNotifier2D" parent="." index="0"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
 position = Vector2( -1, 1.00001 )
 scale = Vector2( 8.8, 5.2 )
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 position = Vector2( 1.2013, -0.650856 )
 scale = Vector2( 0.701279, 0.698276 )
-polygon = PoolVector2Array( 29, -58, 100, -73, 123, -63, 126, -31, 110, -9, 92, 8, 67, 16, 26, 58, -2, 72, -55, 36, -75, 11, -94, 7, -110, -8, -128, -32, -125, -57, -124, -67, -95, -72, -33, -59, -2, -44 )
+polygon = PackedVector2Array( 29, -58, 100, -73, 123, -63, 126, -31, 110, -9, 92, 8, 67, 16, 26, 58, -2, 72, -55, 36, -75, 11, -94, 7, -110, -8, -128, -32, -125, -57, -124, -67, -95, -72, -33, -59, -2, -44 )
 
-[node name="Sprite" type="Sprite" parent="." index="2"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
 position = Vector2( -1.90735e-06, 0 )
 scale = Vector2( 0.697266, 0.710938 )
 texture = ExtResource( 2 )
