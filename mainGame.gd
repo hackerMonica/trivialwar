@@ -148,3 +148,4 @@ func make_label_top():
 	move_child($LifeLabel,get_child_count())
 	move_child($ScoreLabel,get_child_count())
 	move_child($MultiPlayerScoreLabel,get_child_count())
+	move_child($Player,get_child_count())
