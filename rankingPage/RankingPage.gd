@@ -10,7 +10,10 @@ signal successMusic_Stop
 
 
 func _ready():
-	GlobalVar.connect("backend_leaderboard_callback", Callable($LeaderBoard, "display"))
+	# GlobalVar.connect("backend_leaderboard_callback", Callable($LeaderBoard, "display"))
+	$NameButton.pressed.connect(_on_NameButton_pressed)
+	$NameInput.hide()
+	$NameButton.hide()
 	
 func game_over_entrypoint():
 	emit_signal("successMusic_Play")
@@ -19,7 +22,34 @@ func game_over_entrypoint():
 	#GlobalVar.backend_report_score()
 	#var wsreq = {'type': GlobalVar.GetLeaderBoard,'param':'0'}
 	#GlobalVar.send_message(JSON.stringify(wsreq))
+	$LeaderBoard.visible = false
+	$NameInput.show()
+	$NameInput.clear()
+	$NameInput.grab_focus()
+	$NameButton.show()
+	$RestartButton.hide()
+	$HomeButton.hide()
+	# $LeaderBoard.visible = true
+
+func _on_NameButton_pressed():
+	var input_name = $NameInput.text.strip_edges()
+	if input_name == "":
+		return
+		
+	GlobalVar.userName = input_name
+
+	_save_and_show_leaderboard()
+	$NameInput.hide()
+	$NameButton.hide()
+	
+func _save_and_show_leaderboard():
+	GlobalVar.save_ranking_data(GlobalVar.userName, GlobalVar.score)
+	var json_data = GlobalVar.load_ranking_data()
+
+	$LeaderBoard.display(json_data)
 	$LeaderBoard.visible = true
+	$RestartButton.show()
+	$HomeButton.show()
 
 func show_message(text):
 	$Message.text = text
