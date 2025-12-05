@@ -9,7 +9,7 @@ signal startOver_stop
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	show_message("Trivial War")
+	show_message("Aircraft Battle")
 
 func show_message(text):
 	emit_signal("startOver_play")
