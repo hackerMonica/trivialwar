@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="trivialwar"
+config/name="Aircraft Battle"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
@@ -26,7 +26,7 @@ window/size/viewport_height=1920
 window/size/resizable=false
 window/size/window_width_override=540
 window/size/window_height_override=960
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/handheld/orientation="portrait"
 
 [gdnative]
