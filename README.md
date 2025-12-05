@@ -1,6 +1,9 @@
 # Aircraft Battle
-### 待做清单：
 
-- [x] music, 循环播放背景音乐
-- [x] props，拾取道具产生效果(炸弹加分、子弹策略)  
-- [ ] RankingPage，在本地文件存取排行榜数据  
+A aircraft battle game powered by Godot Engine.
+## Features
+- Multiple kinds of enemies: normal, elite, boss
+- Various props: health, bullet, bomb
+- Background music and sound effects
+- Different levels of difficulty
+- Score ranking system with file I/O
