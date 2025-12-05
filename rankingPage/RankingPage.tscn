@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsjxmr52581lh"]
+[gd_scene load_steps=9 format=3 uid="uid://diul514fdufqn"]
 
 [ext_resource type="FontFile" uid="uid://bgyv4uqm1jff5" path="res://fonts/Xolonium-Regular.ttf" id="1"]
-[ext_resource type="Script" uid="uid://c6xhgbuc4eq64" path="res://rankingPage/RankingPage.gd" id="2"]
-[ext_resource type="Script" uid="uid://c4hm56agdicuq" path="res://rankingPage/leader_board.gd" id="3"]
+[ext_resource type="Script" uid="uid://bkn8pluu7oumu" path="res://rankingPage/RankingPage.gd" id="2"]
+[ext_resource type="Script" uid="uid://camxgua7ndyxr" path="res://rankingPage/leader_board.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://cfhpgp1ae6up" path="res://music/success.wav" id="4"]
 
 [sub_resource type="FontFile" id="2"]
